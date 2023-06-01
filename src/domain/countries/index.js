@@ -7,16 +7,14 @@ const baseUrl = process.env.REACT_APP_COUNTRIES_API;
 class CountriesAPI {
   constructor(timeout = 15000) {
     this.api = axios.create({
-      baseUrl,
       timeout,
     });
   }
 
   async getAllCountries() {
     try {
-      const result = await this.api.get('/all');
-
-      return result;
+      const { data } = await this.api.get(`${baseUrl}/all`);
+      return data;
     } catch (e) {
       return new ErrorCreator(e, 'Não foi possível encontrar os países, por favor, tente mais tarde!');
     }
@@ -24,9 +22,9 @@ class CountriesAPI {
 
   async getCountryByName(name) {
     try {
-      const result = await this.api.get(`/name/${name}`);
+      const { data } = await this.api.get(`${baseUrl}/name/${name}`);
 
-      return result;
+      return data;
     } catch (e) {
       return new ErrorCreator(e, `Não foi possível encontrar o país "${name}"`);
     }
@@ -34,9 +32,9 @@ class CountriesAPI {
 
   async getCountryByCurrency(currency) {
     try {
-      const result = await this.api.get(`/currency/${currency}`);
+      const { data } = await this.api.get(`${baseUrl}/currency/${currency}`);
 
-      return result;
+      return data;
     } catch (e) {
       return new ErrorCreator(e, `Não foi possível encontrar o país pela moeda "${currency}"`);
     }
@@ -44,9 +42,9 @@ class CountriesAPI {
 
   async getCountryByCapitalCity(capital) {
     try {
-      const result = await this.api.get(`/capital/${capital}`);
+      const { data } = await this.api.get(`${baseUrl}/capital/${capital}`);
 
-      return result;
+      return data;
     } catch (e) {
       return new ErrorCreator(e, `Não foi possível encontrar o país pela moeda "${capital}"`);
     }
@@ -54,9 +52,9 @@ class CountriesAPI {
 
   async getCountriesByRegion(region) {
     try {
-      const result = await this.api.get(`/region/${region}`);
+      const { data } = await this.api.get(`${baseUrl}/region/${region}`);
 
-      return result;
+      return data;
     } catch (e) {
       return new ErrorCreator(e, `Não foi possível encontrar países na região "${region}"`);
     }
@@ -64,9 +62,9 @@ class CountriesAPI {
 
   async getCountriesByLanguage(language) {
     try {
-      const result = await this.api.get(`/lang/${language}`);
+      const { data } = await this.api.get(`${baseUrl}/lang/${language}`);
 
-      return result;
+      return data;
     } catch (e) {
       return new ErrorCreator(e, `Não foi possível encontrar países com o idioma "${language}"`);
     }
