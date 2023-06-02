@@ -4,7 +4,8 @@ const lightTheme = {
     cards: '#80a4ed',
     actions: '#433a3f',
     text: 'black',
-    reserveColor: '#dd7596',
+    header: '#dd7596',
+    darkModeButtonText: 'white',
   },
 };
 
@@ -14,7 +15,8 @@ const darkTheme = {
     cards: '#15616d',
     actions: '#704c5e',
     text: 'white',
-    reserveColor: '#9e829c',
+    header: '#9e829c',
+    darkModeButtonText: '',
   },
 };
 
