@@ -1,10 +1,12 @@
 import React from 'react';
+import Header from '../../components/Header';
+import MainContainer from './styles';
 
 function MainPage() {
   return (
-    <main>
-      <h1>Main page</h1>
-    </main>
+    <MainContainer>
+      <Header />
+    </MainContainer>
   );
 }
 
