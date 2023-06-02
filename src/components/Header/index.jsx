@@ -5,12 +5,12 @@ import { HeaderContainer, HeaderTitle } from './styles';
 import { themeContext } from '../../context/ThemeContext';
 
 function Header() {
-  const { currTheme } = useContext(themeContext);
+  const { currTheme, changeTheme } = useContext(themeContext);
 
   return (
     <HeaderContainer>
       <HeaderTitle>Where in the world?</HeaderTitle>
-      <Button>
+      <Button onClick={changeTheme}>
         {currTheme.darkMode ? <BulbFilled /> : <BulbOutlined />}
         Dark Mode
       </Button>

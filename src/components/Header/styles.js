@@ -20,7 +20,7 @@ export const HeaderContainer = styld.div`
 `;
 
 export const HeaderTitle = styld.h1`
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   margin: 0;
   margin-left: 40px;
 `;
