@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { Pagination } from 'antd';
 import PropTypes from 'prop-types';
 import { PaginationContainer, CustomPaginationComponent, CurrentPageIndicator } from './paginationComponentStyes';
 
-function PaginationComponent({ total, pageSize, defaultPage }) {
-  const [currentPage, setCurrentPage] = useState(1);
-
+function PaginationComponent({
+  total,
+  pageSize,
+  defaultPage,
+  setCurrentPage,
+  currentPage,
+}) {
   const onPaginationChange = (page) => {
-    console.log(page);
     setCurrentPage(page);
   };
 
@@ -29,6 +32,8 @@ PaginationComponent.propTypes = {
   total: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
   defaultPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
 };
 
 export default PaginationComponent;
