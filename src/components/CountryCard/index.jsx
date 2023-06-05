@@ -6,6 +6,7 @@ import {
   CountryImageContainer,
   CountryTitle,
   CountryInfo,
+  CustomButton,
 } from './countryCardStyles';
 import numberFormatter from '../../helpers/numberFormatter';
 
@@ -27,6 +28,7 @@ function CountryCard({ country }) {
       <CountryInfo>{`Region: ${region}`}</CountryInfo>
       <CountryInfo>{`Population: ${numberFormatter(population)}`}</CountryInfo>
       <CountryInfo>{`Capital: ${capital}`}</CountryInfo>
+      <CustomButton>See details</CustomButton>
     </CountryCardContainer>
   );
 }

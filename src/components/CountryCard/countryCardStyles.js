@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'antd';
 
 export const CountryCardContainer = styled.div`
   align-items: center;
@@ -32,4 +33,13 @@ export const CountryTitle = styled.h1`
 export const CountryInfo = styled.p`
   color: ${({ theme }) => theme.colors.cardsText};
   margin: 5px 0;
+`;
+
+export const CustomButton = styled(Button)`
+  &&& {
+    background-color: ${({ theme }) => theme.colors.cardsButton};
+    border: none;
+    color: ${({ theme }) => theme.colors.cardsText};
+    margin-top: 15px;
+  }
 `;

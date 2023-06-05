@@ -19,7 +19,6 @@ function MainPage() {
     const currentCountries = countries.slice(startIndex, endIndex);
 
     setCurrentPageCountries(currentCountries);
-    window.scrollTo(0, 0);
   }, [currentPage, countries]);
 
   return (

@@ -10,11 +10,11 @@ export const MainContainer = styled.main`
 `;
 
 export const ContentContainer = styled.div`
+  margin: 20px 0;
   width: 90%;
 `;
 
 export const CountriesCardsContainer = styled.div`
-  border: 1px solid blue;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
