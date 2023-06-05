@@ -46,7 +46,10 @@ export const RightSideContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  align-items: center;
+  display: flex;
   height: 25vh;
+  justify-content: center;
   width: 95%;
 `;
 
@@ -59,3 +62,5 @@ export const ImageTitle = styled.h1`
   font-size: 20px;
   text-align: center;
 `;
+
+export const CountryInfo = styled.p``;

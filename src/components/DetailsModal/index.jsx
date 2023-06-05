@@ -11,6 +11,7 @@ import {
   ImageContainer,
   Image,
   ImageTitle,
+  CountryInfo,
 } from './detailsModalStyles';
 import CountriesAPI from '../../domain/countries';
 
@@ -61,9 +62,11 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
           </ContentContainer>
           <RightSideContainer>
             <ImageContainer>
-              <Image src={coatOfArms.svg} />
+              {Object.entries(coatOfArms).length === 0
+                ? <CountryInfo>{'This country doesn\'t have a coat of arms image'}</CountryInfo>
+                : <Image src={coatOfArms.svg} />}
             </ImageContainer>
-            <ImageTitle>{`Coat of amrs of ${name.common}`}</ImageTitle>
+            <ImageTitle>{`Coat of arms of ${name.common}`}</ImageTitle>
           </RightSideContainer>
         </ModalContent>
       )}
