@@ -68,3 +68,17 @@ export const TypeSelectOption = styled.option`
   font-size: 22px;
   font-weight: 700;
 `;
+
+export const ClearFilterContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  width: 100%;
+
+  button {
+    background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+    border: none;
+    color: ${({ theme }) => theme.colors.searchColor};
+  }
+`;

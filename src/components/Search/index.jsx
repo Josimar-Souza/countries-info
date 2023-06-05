@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Form,
@@ -13,11 +13,14 @@ import {
   FormItemsContainer,
   TypeSelect,
   TypeSelectOption,
+  ClearFilterContainer,
 } from './styles';
 
 function Search() {
+  const [search, setSearch] = useState({ values: { term: '', type: '' }, hasSearched: false });
+
   const onSearchFinished = (values) => {
-    console.log(values);
+    setSearch({ values: { term: values.term, type: values.type }, hasSearched: true });
   };
 
   return (
@@ -48,6 +51,9 @@ function Search() {
             Search
           </Button>
         </FormItemsContainer>
+        <ClearFilterContainer>
+          {search.hasSearched ? <Button>Clear search</Button> : null}
+        </ClearFilterContainer>
       </Form>
     </SearchContainer>
   );
