@@ -12,3 +12,8 @@ export const MainContainer = styled.main`
 export const ContentContainer = styled.div`
   width: 90%;
 `;
+
+export const CountriesCardsContainer = styled.div`
+  border: 1px solid blue;
+  width: 100%;
+`;

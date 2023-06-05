@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { MainContainer, ContentContainer } from './styles';
+import { MainContainer, ContentContainer, CountriesCardsContainer } from './styles';
 import Header from '../../components/Header';
 import Search from '../../components/Search';
 import PaginationComponent from '../../components/PaginationComponent';
 import { countriesContext } from '../../context/CountriesContext';
+import CountryCard from '../../components/CountryCard';
 
 function MainPage() {
   const { countries } = useContext(countriesContext);
@@ -20,12 +21,17 @@ function MainPage() {
 
     window.scrollTo(0, 0);
   }, [currentPage, countries]);
-  console.log(currentPageCountries);
+
   return (
     <MainContainer>
       <Header />
       <ContentContainer>
         <Search />
+        <CountriesCardsContainer>
+          {currentPageCountries.map(() => (
+            <CountryCard />
+          ))}
+        </CountriesCardsContainer>
         <PaginationComponent
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
