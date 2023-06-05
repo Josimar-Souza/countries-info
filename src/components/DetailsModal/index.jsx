@@ -35,7 +35,8 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
   console.log(country);
 
   const { name, flags, coatOfArms } = country;
-
+  // Some time the api return the wrong country because of name equal,
+  // to avoid that you need to search by cca2 since the api doens't have an id implementation.
   return (
     <CustomModal
       open={detailsModalInfo.open}
