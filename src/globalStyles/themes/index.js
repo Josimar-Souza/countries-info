@@ -10,6 +10,9 @@ const lightTheme = {
     darkModeButtonText: 'white',
     searchColor: 'black',
     searchBackgroundColor: 'white',
+    modalBackground: 'white',
+    modalButton: 'white',
+    modalButtonBorder: '1px solid black',
   },
 };
 
@@ -25,6 +28,9 @@ const darkTheme = {
     darkModeButtonText: 'black',
     searchColor: 'white',
     searchBackgroundColor: '#704c5e',
+    modalBackground: '#15616d',
+    modalButton: '#3ca7b7',
+    modalButtonBorder: 'none',
   },
 };
 
