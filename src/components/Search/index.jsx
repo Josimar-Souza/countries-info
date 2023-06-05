@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
 import {
   Form,
   Input,
   Button,
 } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+
 import {
   SearchContainer,
   TermSearchContainer,
@@ -15,12 +15,23 @@ import {
   TypeSelectOption,
   ClearFilterContainer,
 } from './styles';
+import { countriesContext } from '../../context/CountriesContext';
 
 function Search() {
-  const [search, setSearch] = useState({ values: { term: '', type: '' }, hasSearched: false });
+  const { searchCountries, getAllCountries } = useContext(countriesContext);
+
+  const [hasSearched, setHasSearched] = useState(false);
 
   const onSearchFinished = (values) => {
-    setSearch({ values: { term: values.term, type: values.type }, hasSearched: true });
+    setHasSearched(true);
+
+    searchCountries(values.term, values.type);
+  };
+
+  const onClearSearchClicked = () => {
+    setHasSearched(false);
+
+    getAllCountries();
   };
 
   return (
@@ -52,7 +63,7 @@ function Search() {
           </Button>
         </FormItemsContainer>
         <ClearFilterContainer>
-          {search.hasSearched ? <Button>Clear search</Button> : null}
+          {hasSearched ? <Button onClick={onClearSearchClicked}>Clear search</Button> : null}
         </ClearFilterContainer>
       </Form>
     </SearchContainer>
