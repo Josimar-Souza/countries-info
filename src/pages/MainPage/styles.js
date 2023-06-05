@@ -15,5 +15,9 @@ export const ContentContainer = styled.div`
 
 export const CountriesCardsContainer = styled.div`
   border: 1px solid blue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
   width: 100%;
 `;

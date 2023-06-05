@@ -5,6 +5,7 @@ import Search from '../../components/Search';
 import PaginationComponent from '../../components/PaginationComponent';
 import { countriesContext } from '../../context/CountriesContext';
 import CountryCard from '../../components/CountryCard';
+import generateRandomUUID from '../../helpers/randomUUID';
 
 function MainPage() {
   const { countries } = useContext(countriesContext);
@@ -18,7 +19,6 @@ function MainPage() {
     const currentCountries = countries.slice(startIndex, endIndex);
 
     setCurrentPageCountries(currentCountries);
-
     window.scrollTo(0, 0);
   }, [currentPage, countries]);
 
@@ -28,8 +28,8 @@ function MainPage() {
       <ContentContainer>
         <Search />
         <CountriesCardsContainer>
-          {currentPageCountries.map(() => (
-            <CountryCard />
+          {currentPageCountries.map((country) => (
+            <CountryCard key={generateRandomUUID(country.name.common)} country={country} />
           ))}
         </CountriesCardsContainer>
         <PaginationComponent
