@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Spin } from 'antd';
-import { CustomModal, CustomButton } from './detailsModalStyles';
+import {
+  CustomModal,
+  CustomButton,
+  ModalContent,
+  LeftSideContainer,
+  ContentContainer,
+  RightSideContainer,
+  ImageContainer,
+  Image,
+  ImageTitle,
+} from './detailsModalStyles';
 import CountriesAPI from '../../domain/countries';
 
 const countriesAPI = new CountriesAPI();
@@ -22,10 +32,14 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
     getCountry();
   }, [detailsModalInfo]);
   console.log(country);
+
+  const { name, flags, coatOfArms } = country;
+
   return (
     <CustomModal
       open={detailsModalInfo.open}
       onCancel={() => setDetailsModalInfo({ open: false, countryName: '' })}
+      width="85%"
       footer={[
         <CustomButton
           onClick={() => setDetailsModalInfo({ open: false, countryName: '' })}
@@ -35,7 +49,23 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
       ]}
     >
       {loading ? <Spin tip="Loading..." /> : (
-        <h1>Test</h1>
+        <ModalContent>
+          <LeftSideContainer>
+            <ImageContainer>
+              <Image src={flags.svg} />
+            </ImageContainer>
+            <ImageTitle>{name.official}</ImageTitle>
+          </LeftSideContainer>
+          <ContentContainer>
+            <p>Center</p>
+          </ContentContainer>
+          <RightSideContainer>
+            <ImageContainer>
+              <Image src={coatOfArms.svg} />
+            </ImageContainer>
+            <ImageTitle>{`Coat of amrs of ${name.common}`}</ImageTitle>
+          </RightSideContainer>
+        </ModalContent>
       )}
     </CustomModal>
   );
