@@ -25,6 +25,32 @@ function CountriesContext({ children }) {
     }
   };
 
+  const searchCountries = async (term, type) => {
+    let result;
+
+    switch (type) {
+      case 'name':
+        result = await countriesAPI.getCountryByName(term);
+        break;
+      case 'currency':
+        result = await countriesAPI.getCountryByCurrency(term);
+        break;
+      case 'capital':
+        result = await countriesAPI.getCountryByCapitalCity(term);
+        break;
+      case 'region':
+        result = await countriesAPI.getCountriesByRegion(term);
+        break;
+      case 'lang':
+        result = await countriesAPI.getCountriesByLanguage(term);
+        break;
+      default:
+        sendNotification('Não foi possível realizar a busca, por favor, tente mais tarde!', 'error');
+    }
+
+    setCountries(result);
+  };
+
   useEffect(() => {
     getAllCountries();
   }, []);
@@ -32,6 +58,8 @@ function CountriesContext({ children }) {
   const contextValue = useMemo(() => ({
     countries,
     setCountries,
+    getAllCountries,
+    searchCountries,
   }), [countries]);
 
   return (
