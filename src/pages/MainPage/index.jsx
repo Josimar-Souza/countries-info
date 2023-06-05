@@ -6,6 +6,7 @@ import PaginationComponent from '../../components/PaginationComponent';
 import { countriesContext } from '../../context/CountriesContext';
 import CountryCard from '../../components/CountryCard';
 import generateRandomUUID from '../../helpers/randomUUID';
+import sendNotification from '../../helpers/sendNotification';
 
 function MainPage() {
   const { countries } = useContext(countriesContext);
@@ -16,9 +17,13 @@ function MainPage() {
     const endIndex = currentPage * 10;
     const startIndex = endIndex - 10;
 
-    const currentCountries = countries.slice(startIndex, endIndex);
+    try {
+      const currentCountries = countries.slice(startIndex, endIndex);
 
-    setCurrentPageCountries(currentCountries);
+      setCurrentPageCountries(currentCountries);
+    } catch (e) {
+      sendNotification('Não foi possível realizar a pesquisa, verifique o termo pesquisado e tenha a certeza de pesquisar em ingles', 'error');
+    }
   }, [currentPage, countries]);
 
   return (
