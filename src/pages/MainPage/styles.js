@@ -10,5 +10,14 @@ export const MainContainer = styled.main`
 `;
 
 export const ContentContainer = styled.div`
+  margin: 20px 0;
   width: 90%;
+`;
+
+export const CountriesCardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
 `;

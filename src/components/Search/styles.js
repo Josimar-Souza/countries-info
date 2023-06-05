@@ -21,7 +21,7 @@ export const FormItemsContainer = styled.div`
   width: 100%;
 
   button {
-    background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+    background-color: ${({ theme }) => theme.colors.cardsButton};
     border: none;
     color: ${({ theme }) => theme.colors.searchColor};
     font-size: 22px;
@@ -36,7 +36,7 @@ export const TermSearchContainer = styled.div`
   width: 50%;
 
   input {
-    background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+    background-color: ${({ theme }) => theme.colors.cardsButton};
     border: none;
     color: ${({ theme }) => theme.colors.searchColor};
     font-size: 22px;
@@ -53,7 +53,7 @@ export const TypeSearchContainer = styled.div`
 `;
 
 export const TypeSelect = styled.select`
-  background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+  background-color: ${({ theme }) => theme.colors.cardsButton};
   border: none;
   border-radius: 10px;
   color: ${({ theme }) => theme.colors.searchColor};
@@ -77,7 +77,7 @@ export const ClearFilterContainer = styled.div`
   width: 100%;
 
   button {
-    background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+    background-color: ${({ theme }) => theme.colors.cardsButton};
     border: none;
     color: ${({ theme }) => theme.colors.searchColor};
   }
