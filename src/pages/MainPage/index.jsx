@@ -7,11 +7,13 @@ import { countriesContext } from '../../context/CountriesContext';
 import CountryCard from '../../components/CountryCard';
 import generateRandomUUID from '../../helpers/randomUUID';
 import sendNotification from '../../helpers/sendNotification';
+import DetailsModal from '../../components/DetailsModal';
 
 function MainPage() {
   const { countries } = useContext(countriesContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageCountries, setCurrentPageCountries] = useState([]);
+  const [detailsModalInfo, setDetailsModalInfo] = useState({ open: false, countryName: '' });
 
   useEffect(() => {
     const endIndex = currentPage * 10;
@@ -33,7 +35,11 @@ function MainPage() {
         <Search />
         <CountriesCardsContainer>
           {currentPageCountries.map((country) => (
-            <CountryCard key={generateRandomUUID(country.name.common)} country={country} />
+            <CountryCard
+              key={generateRandomUUID(country.name.common)}
+              country={country}
+              setDetailsModalInfo={setDetailsModalInfo}
+            />
           ))}
         </CountriesCardsContainer>
         <PaginationComponent
@@ -44,6 +50,10 @@ function MainPage() {
           total={countries.length}
         />
       </ContentContainer>
+      <DetailsModal
+        detailsModalInfo={detailsModalInfo}
+        setDetailsModalInfo={setDetailsModalInfo}
+      />
     </MainContainer>
   );
 }

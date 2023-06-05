@@ -10,7 +10,7 @@ import {
 } from './countryCardStyles';
 import numberFormatter from '../../helpers/numberFormatter';
 
-function CountryCard({ country }) {
+function CountryCard({ country, setDetailsModalInfo }) {
   const {
     flags,
     name,
@@ -18,6 +18,10 @@ function CountryCard({ country }) {
     population,
     capital,
   } = country;
+
+  const onSeeDetailsButtonClicked = () => {
+    setDetailsModalInfo({ open: true, countryName: name.common });
+  };
 
   return (
     <CountryCardContainer>
@@ -28,7 +32,7 @@ function CountryCard({ country }) {
       <CountryInfo>{`Region: ${region}`}</CountryInfo>
       <CountryInfo>{`Population: ${numberFormatter(population)}`}</CountryInfo>
       <CountryInfo>{`Capital: ${capital}`}</CountryInfo>
-      <CustomButton>See details</CustomButton>
+      <CustomButton onClick={onSeeDetailsButtonClicked}>See details</CustomButton>
     </CountryCardContainer>
   );
 }
@@ -46,6 +50,7 @@ CountryCard.propTypes = {
     population: PropTypes.number.isRequired,
     capital: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
+  setDetailsModalInfo: PropTypes.func.isRequired,
 };
 
 export default CountryCard;
