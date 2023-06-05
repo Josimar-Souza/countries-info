@@ -13,7 +13,7 @@ function MainPage() {
       <Header />
       <ContentContainer>
         <Search />
-        <PaginationComponent defaultPage={1} defaultPageSize={10} total={countries.length} />
+        <PaginationComponent defaultPage={1} pageSize={10} total={countries.length} />
       </ContentContainer>
     </MainContainer>
   );

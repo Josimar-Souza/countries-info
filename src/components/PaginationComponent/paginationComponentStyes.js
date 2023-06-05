@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { Pagination } from 'antd';
 
 export const PaginationContainer = styled.div`
-  border: 1px solid red;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 `;
 
 export const CustomPaginationComponent = styled(Pagination)`
@@ -32,4 +35,14 @@ export const CustomPaginationComponent = styled(Pagination)`
       }
     }
   }
+`;
+
+export const CurrentPageIndicator = styled.p`
+  background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+  border-radius: 15px;
+  color: ${({ theme }) => theme.colors.searchColor};
+  font-size: 13px;
+  margin-left: 20px;
+  padding: 10px;
+  text-align: center;
 `;
