@@ -21,7 +21,7 @@ const darkTheme = {
     cardsText: 'white',
     cardsButton: '#3ca7b7',
     text: 'black',
-    header: '#9e829c',
+    header: '#3ca7b7',
     darkModeButtonText: 'black',
     searchColor: 'white',
     searchBackgroundColor: '#704c5e',

@@ -11,7 +11,7 @@ export const PaginationContainer = styled.div`
 export const CustomPaginationComponent = styled(Pagination)`
   &&& {
     li {
-      background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+      background-color: ${({ theme }) => theme.colors.cardsButton};
       border: none;
       border-radius: 15px;
 
@@ -24,7 +24,7 @@ export const CustomPaginationComponent = styled(Pagination)`
       }
 
       div {
-        background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+        background-color: ${({ theme }) => theme.colors.cardsButton};
         border: none;
         border-radius: 10px;
         color: ${({ theme }) => theme.colors.searchColor};
@@ -38,7 +38,7 @@ export const CustomPaginationComponent = styled(Pagination)`
 `;
 
 export const CurrentPageIndicator = styled.p`
-  background-color: ${({ theme }) => theme.colors.searchBackgroundColor};
+  background-color: ${({ theme }) => theme.colors.cardsButton};
   border-radius: 15px;
   color: ${({ theme }) => theme.colors.searchColor};
   font-size: 13px;
