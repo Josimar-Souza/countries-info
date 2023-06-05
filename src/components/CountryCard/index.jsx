@@ -5,19 +5,28 @@ import {
   CountryImage,
   CountryImageContainer,
   CountryTitle,
+  CountryInfo,
 } from './countryCardStyles';
+import numberFormatter from '../../helpers/numberFormatter';
 
 function CountryCard({ country }) {
-  console.log(country);
-
-  const { flags, name, translations } = country;
+  const {
+    flags,
+    name,
+    region,
+    population,
+    capital,
+  } = country;
 
   return (
     <CountryCardContainer>
       <CountryImageContainer>
-        <CountryImage src={flags.png} alt={`Bandeira, ${name.common}`} />
+        <CountryImage src={flags.png} alt={flags.alt} />
       </CountryImageContainer>
-      <CountryTitle>{translations.por.common}</CountryTitle>
+      <CountryTitle>{name.common}</CountryTitle>
+      <CountryInfo>{`Region: ${region}`}</CountryInfo>
+      <CountryInfo>{`Population: ${numberFormatter(population)}`}</CountryInfo>
+      <CountryInfo>{`Capital: ${capital}`}</CountryInfo>
     </CountryCardContainer>
   );
 }
@@ -26,15 +35,14 @@ CountryCard.propTypes = {
   country: PropTypes.shape({
     flags: PropTypes.shape({
       png: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
     }).isRequired,
     name: PropTypes.shape({
-      common: PropTypes.string.isRequired,
+      common: PropTypes.string,
     }).isRequired,
-    translations: PropTypes.shape({
-      por: PropTypes.shape({
-        common: PropTypes.string,
-      }),
-    }).isRequired,
+    region: PropTypes.string.isRequired,
+    population: PropTypes.number.isRequired,
+    capital: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };
 

@@ -28,3 +28,8 @@ export const CountryTitle = styled.h1`
   text-align: center;
   margin-top: 10px;
 `;
+
+export const CountryInfo = styled.p`
+  color: ${({ theme }) => theme.colors.cardsText};
+  margin: 5px 0;
+`;
