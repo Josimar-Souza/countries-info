@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Spin, Divider } from 'antd';
+import { Spin } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import {
   CustomModal,
@@ -16,6 +16,8 @@ import {
   CountryInfoContainer,
   SectionTitle,
   VerticalDivider,
+  CustomHorizontalDivider,
+  CustomLink,
 } from './detailsModalStyles';
 import CountriesAPI from '../../domain/countries';
 import generateRandomUUID from '../../helpers/randomUUID';
@@ -169,7 +171,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
                   </CountryInfo>
                 )}
             </CountryInfoContainer>
-            <Divider />
+            <CustomHorizontalDivider />
             <SectionTitle>Currencies</SectionTitle>
             {Object.entries(currencies).map((currency) => (
               <CountryInfoContainer
@@ -181,46 +183,46 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
                 <CountryInfo>{`Symbol: ${currency[1].symbol}`}</CountryInfo>
               </CountryInfoContainer>
             ))}
-            <Divider />
+            <CustomHorizontalDivider />
             <SectionTitle>Car info</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
               <CountryInfo>{`Side: ${car.side}`}</CountryInfo>
               <CountryInfo>{`Sign: ${car.signs[0]?.length === 0 ? 'Uninformed' : car.signs}`}</CountryInfo>
             </CountryInfoContainer>
-            <Divider />
+            <CustomHorizontalDivider />
             <SectionTitle>Maps</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
               <CountryInfo>
                 Google maps:
                 {' '}
-                <a
+                <CustomLink
                   href={maps.googleMaps}
                   target="_blank"
                   rel="noreferrer"
                 >
                   {maps.googleMaps}
-                </a>
+                </CustomLink>
               </CountryInfo>
               <CountryInfo>
                 Open street maps:
                 {' '}
-                <a
+                <CustomLink
                   href={maps.openStreetMaps}
                   target="_blank"
                   rel="noreferrer"
                 >
                   {maps.openStreetMaps}
-                </a>
+                </CustomLink>
               </CountryInfo>
             </CountryInfoContainer>
-            <Divider />
+            <CustomHorizontalDivider />
             <SectionTitle>Languages</SectionTitle>
             <CountryInfoContainer justifyContent="center" flexDirection="column">
               {Object.values(languages).map((language) => (
                 <CountryInfo key={generateRandomUUID(language)}>{language}</CountryInfo>
               ))}
             </CountryInfoContainer>
-            <Divider />
+            <CustomHorizontalDivider />
             <SectionTitle>Border countries</SectionTitle>
             <CountryInfoContainer flexDirection="column" justifyContent="space-around">
               {borderCountries.map((border) => (
@@ -232,7 +234,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
                 </CountryInfo>
               ))}
             </CountryInfoContainer>
-            <Divider />
+            <CustomHorizontalDivider />
             <SectionTitle>Translations</SectionTitle>
             {Object.entries(translations).map((translation) => (
               <CountryInfo

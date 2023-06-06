@@ -62,6 +62,7 @@ export const Image = styled.img`
 `;
 
 export const ImageTitle = styled.h1`
+  color: ${({ theme }) => theme.colors.modalTextColor};
   font-size: 20px;
   text-align: center;
 `;
@@ -76,15 +77,28 @@ export const CountryInfoContainer = styled.div`
 `;
 
 export const CountryInfo = styled.p`
+  color: ${({ theme }) => theme.colors.modalTextColor};
   font-weight: 600;
   margin: ${({ margin }) => margin};
   text-align: center;
 `;
 
-export const SectionTitle = styled.h2``;
+export const SectionTitle = styled.h2`
+  color: ${({ theme }) => theme.colors.modalTextColor};
+`;
 
 export const VerticalDivider = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.modalVerticalDividerColor};
   border-radius: 5px;
   margin: 0 5px;
+`;
+
+export const CustomHorizontalDivider = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.modalVerticalDividerColor};
+  margin: 15px 0;
+  width: 100%;
+`;
+
+export const CustomLink = styled.a`
+  color: ${({ theme }) => theme.colors.modalLinkColor};
 `;

@@ -16,6 +16,7 @@ const lightTheme = {
     modalButtonColor: 'black',
     modalTextColor: 'black',
     modalVerticalDividerColor: 'rgba(181, 181, 181, 0.2)',
+    modalLinkColor: 'blue',
   },
 };
 
@@ -36,7 +37,8 @@ const darkTheme = {
     modalButtonBorder: 'none',
     modalButtonColor: 'white',
     modalTextColor: 'white',
-    modalVerticalDividerColor: 'rgba(0, 0, 0, 0.2)',
+    modalVerticalDividerColor: 'rgba(255, 255, 255, 0.2)',
+    modalLinkColor: 'blue',
   },
 };
 
