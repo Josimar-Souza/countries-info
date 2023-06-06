@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Spin } from 'antd';
+import { Spin, Divider } from 'antd';
 import {
   CustomModal,
   CustomButton,
@@ -14,6 +14,7 @@ import {
   CountryInfo,
   CountryInfoContainer,
   SectionTitle,
+  VerticalDivider,
 } from './detailsModalStyles';
 import CountriesAPI from '../../domain/countries';
 import generateRandomUUID from '../../helpers/randomUUID';
@@ -23,14 +24,32 @@ const countriesAPI = new CountriesAPI();
 
 function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
   const [country, setCountry] = useState({});
+  const [borderCountries, setBorderCountries] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const getBorderCountries = async (countryFounded) => {
+      const { borders } = countryFounded;
+
+      const countriesPromises = borders.map((border) => countriesAPI.getCountryByCCA2(border));
+
+      const countries = await Promise.all(countriesPromises);
+
+      const formattedCountries = [];
+
+      countries.forEach((countryQueried) => {
+        formattedCountries.push(countryQueried[0]);
+      });
+
+      setBorderCountries(formattedCountries);
+    };
+
     const getCountry = async () => {
       if (detailsModalInfo.cca2 !== '') {
         const countryFounded = await countriesAPI.getCountryByCCA2(detailsModalInfo.cca2);
         setLoading(false);
         setCountry(countryFounded[0]);
+        getBorderCountries(countryFounded[0]);
       }
     };
 
@@ -57,6 +76,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
     languages,
     cca2,
     unMember,
+    translations,
   } = country;
 
   return (
@@ -81,6 +101,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
             </ImageContainer>
             <ImageTitle>{name.official}</ImageTitle>
           </LeftSideContainer>
+          <VerticalDivider />
           <ContentContainer>
             <SectionTitle>Basics</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
@@ -107,6 +128,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
               <CountryInfo>{`CCA2: ${cca2}`}</CountryInfo>
               <CountryInfo>{`Member of the united nations: ${unMember}`}</CountryInfo>
             </CountryInfoContainer>
+            <Divider />
             <SectionTitle>Currencies</SectionTitle>
             {Object.entries(currencies).map((currency) => (
               <CountryInfoContainer
@@ -118,11 +140,13 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
                 <CountryInfo>{`Symbol: ${currency[1].symbol}`}</CountryInfo>
               </CountryInfoContainer>
             ))}
+            <Divider />
             <SectionTitle>Car info</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
               <CountryInfo>{`Side: ${car.side}`}</CountryInfo>
               <CountryInfo>{`Sign: ${car.signs[0]?.length === 0 ? 'Uninformed' : car.signs}`}</CountryInfo>
             </CountryInfoContainer>
+            <Divider />
             <SectionTitle>Maps</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
               <CountryInfo>
@@ -148,13 +172,37 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
                 </a>
               </CountryInfo>
             </CountryInfoContainer>
+            <Divider />
             <SectionTitle>Languages</SectionTitle>
             <CountryInfoContainer justifyContent="center" flexDirection="column">
               {Object.values(languages).map((language) => (
                 <CountryInfo key={generateRandomUUID(language)}>{language}</CountryInfo>
               ))}
             </CountryInfoContainer>
+            <Divider />
+            <SectionTitle>Border countries</SectionTitle>
+            <CountryInfoContainer flexDirection="column" justifyContent="space-around">
+              {borderCountries.map((border) => (
+                <CountryInfo
+                  key={generateRandomUUID(border.name.common)}
+                  margin="5px 0"
+                >
+                  {border.name.common}
+                </CountryInfo>
+              ))}
+            </CountryInfoContainer>
+            <Divider />
+            <SectionTitle>Translations</SectionTitle>
+            {Object.entries(translations).map((translation) => (
+              <CountryInfo
+                key={generateRandomUUID(translation[0])}
+                margin="5px 0"
+              >
+                {`${translation[0].toUpperCase()} - ${translation[1].official}`}
+              </CountryInfo>
+            ))}
           </ContentContainer>
+          <VerticalDivider />
           <RightSideContainer>
             <ImageContainer>
               {Object.entries(coatOfArms).length === 0

@@ -15,6 +15,7 @@ const lightTheme = {
     modalButtonBorder: '1px solid black',
     modalButtonColor: 'black',
     modalTextColor: 'black',
+    modalVerticalDividerColor: 'rgba(181, 181, 181, 0.2)',
   },
 };
 
@@ -35,6 +36,7 @@ const darkTheme = {
     modalButtonBorder: 'none',
     modalButtonColor: 'white',
     modalTextColor: 'white',
+    modalVerticalDividerColor: 'rgba(0, 0, 0, 0.2)',
   },
 };
 

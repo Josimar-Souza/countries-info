@@ -16,7 +16,6 @@ export const CustomButton = styled(Button)`
 `;
 
 export const ModalContent = styled.div`
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -25,7 +24,6 @@ export const ModalContent = styled.div`
 
 export const LeftSideContainer = styled.div`
   align-items: center;
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -35,7 +33,6 @@ export const LeftSideContainer = styled.div`
 
 export const ContentContainer = styled.div`
   align-items: center;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -44,7 +41,6 @@ export const ContentContainer = styled.div`
 
 export const RightSideContainer = styled.div`
   align-items: center;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,7 +68,6 @@ export const ImageTitle = styled.h1`
 
 export const CountryInfoContainer = styled.div`
   align-items: center;
-  border: 1px solid purple;
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
   justify-content: ${({ justifyContent }) => justifyContent};
@@ -82,7 +77,14 @@ export const CountryInfoContainer = styled.div`
 
 export const CountryInfo = styled.p`
   font-weight: 600;
+  margin: ${({ margin }) => margin};
   text-align: center;
 `;
 
 export const SectionTitle = styled.h2``;
+
+export const VerticalDivider = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.modalVerticalDividerColor};
+  border-radius: 5px;
+  margin: 0 5px;
+`;
