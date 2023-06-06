@@ -6,7 +6,7 @@
   <li><a href="#api">API</a></li>
   <li><a href="#deploy">Deploy</a></li>
   <li><a href="#used-tecnologies">Tecnologias utilizadas</a></li>
-  <li><a>Contatos</a></li>
+  <li><a href="#contacts">Contatos</a></li>
 </ul>
 
 <h2 id="objective">Objetivo</h2>
