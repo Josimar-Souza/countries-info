@@ -32,7 +32,7 @@ function MainPage() {
     <MainContainer>
       <Header />
       <ContentContainer>
-        <Search />
+        <Search setCurrentPage={setCurrentPage} />
         <CountriesCardsContainer>
           {currentPageCountries.map((country) => (
             <CountryCard

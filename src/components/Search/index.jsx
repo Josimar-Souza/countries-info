@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import {
   Form,
   Input,
@@ -17,7 +18,7 @@ import {
 } from './styles';
 import { countriesContext } from '../../context/CountriesContext';
 
-function Search() {
+function Search({ setCurrentPage }) {
   const { searchCountries, getAllCountries } = useContext(countriesContext);
 
   const [hasSearched, setHasSearched] = useState(false);
@@ -26,12 +27,13 @@ function Search() {
     setHasSearched(true);
 
     searchCountries(values.term, values.type);
+    setCurrentPage(1);
   };
 
   const onClearSearchClicked = () => {
     setHasSearched(false);
-
     getAllCountries();
+    setCurrentPage(1);
   };
 
   return (
@@ -69,5 +71,9 @@ function Search() {
     </SearchContainer>
   );
 }
+
+Search.propTypes = {
+  setCurrentPage: PropTypes.func.isRequired,
+};
 
 export default Search;
