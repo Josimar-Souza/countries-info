@@ -27,7 +27,7 @@ function CountryCard({ country, setDetailsModalInfo }) {
   return (
     <CountryCardContainer>
       <CountryImageContainer>
-        <CountryImage src={flags.png} alt={flags.alt} />
+        <CountryImage src={flags.svg} alt={flags.alt} />
       </CountryImageContainer>
       <CountryTitle>{name.common}</CountryTitle>
       <CountryInfo>{`Region: ${region}`}</CountryInfo>
@@ -41,7 +41,7 @@ function CountryCard({ country, setDetailsModalInfo }) {
 CountryCard.propTypes = {
   country: PropTypes.shape({
     flags: PropTypes.shape({
-      png: PropTypes.string.isRequired,
+      svg: PropTypes.string.isRequired,
       alt: PropTypes.string.isRequired,
     }).isRequired,
     name: PropTypes.shape({
