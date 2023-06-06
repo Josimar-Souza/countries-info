@@ -16,7 +16,6 @@ export const CustomButton = styled(Button)`
 `;
 
 export const ModalContent = styled.div`
-  align-items: center;
   border: 1px solid red;
   display: flex;
   justify-content: space-between;
@@ -26,14 +25,20 @@ export const ModalContent = styled.div`
 
 export const LeftSideContainer = styled.div`
   align-items: center;
-  border: 1px solid red;
+  border: 1px solid green;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  max-height: 40vh;
   width: 20%;
 `;
 
 export const ContentContainer = styled.div`
+  align-items: center;
   border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
   width: 60%;
 `;
 
@@ -42,6 +47,8 @@ export const RightSideContainer = styled.div`
   border: 1px solid blue;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  max-height: 40vh;
   width: 20%;
 `;
 
@@ -63,4 +70,19 @@ export const ImageTitle = styled.h1`
   text-align: center;
 `;
 
-export const CountryInfo = styled.p``;
+export const CountryInfoContainer = styled.div`
+  align-items: center;
+  border: 1px solid purple;
+  display: flex;
+  flex-direction: ${({ flexDirection }) => flexDirection};
+  justify-content: ${({ justifyContent }) => justifyContent};
+  margin: 10px 0;
+  width: 100%;
+`;
+
+export const CountryInfo = styled.p`
+  font-weight: 600;
+  text-align: center;
+`;
+
+export const SectionTitle = styled.h2``;
