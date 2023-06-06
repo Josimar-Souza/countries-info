@@ -34,17 +34,21 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
     const getBorderCountries = async (countryFounded) => {
       const { borders } = countryFounded;
 
-      const countriesPromises = borders.map((border) => countriesAPI.getCountryByCCA2(border));
+      if (borders) {
+        const countriesPromises = borders.map((border) => countriesAPI.getCountryByCCA2(border));
 
-      const countries = await Promise.all(countriesPromises);
+        const countries = await Promise.all(countriesPromises);
 
-      const formattedCountries = [];
+        const formattedCountries = [];
 
-      countries.forEach((countryQueried) => {
-        formattedCountries.push(countryQueried[0]);
-      });
+        countries.forEach((countryQueried) => {
+          formattedCountries.push(countryQueried[0]);
+        });
 
-      setBorderCountries(formattedCountries);
+        setBorderCountries(formattedCountries);
+      } else {
+        setBorderCountries([]);
+      }
     };
 
     const getCountry = async () => {
@@ -80,6 +84,20 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
     unMember,
     translations,
   } = country;
+
+  const getCoatOfArms = () => {
+    if (coatOfArms) {
+      if (Object.entries(coatOfArms).length === 0) {
+        return (
+          <CountryInfo>{'This country doesn\'t have a coat of arms image'}</CountryInfo>
+        );
+      }
+    }
+
+    return (
+      <Image src={coatOfArms.svg} />
+    );
+  };
 
   return (
     <CustomModal
@@ -173,16 +191,20 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
             </CountryInfoContainer>
             <CustomHorizontalDivider />
             <SectionTitle>Currencies</SectionTitle>
-            {Object.entries(currencies).map((currency) => (
-              <CountryInfoContainer
-                justifyContent="space-between"
-                flexDirection="row"
-                key={generateRandomUUID(currency[1].symbol)}
-              >
-                <CountryInfo>{`Currency: ${currency[1].name}`}</CountryInfo>
-                <CountryInfo>{`Symbol: ${currency[1].symbol}`}</CountryInfo>
-              </CountryInfoContainer>
-            ))}
+            {currencies
+              ? (
+                Object.entries(currencies).map((currency) => (
+                  <CountryInfoContainer
+                    justifyContent="space-between"
+                    flexDirection="row"
+                    key={generateRandomUUID(currency[1].symbol)}
+                  >
+                    <CountryInfo>{`Currency: ${currency[1].name}`}</CountryInfo>
+                    <CountryInfo>{`Symbol: ${currency[1].symbol}`}</CountryInfo>
+                  </CountryInfoContainer>
+                ))
+              )
+              : <CountryInfo>No currencies was found</CountryInfo>}
             <CustomHorizontalDivider />
             <SectionTitle>Car info</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
@@ -218,39 +240,47 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
             <CustomHorizontalDivider />
             <SectionTitle>Languages</SectionTitle>
             <CountryInfoContainer justifyContent="center" flexDirection="column">
-              {Object.values(languages).map((language) => (
-                <CountryInfo key={generateRandomUUID(language)}>{language}</CountryInfo>
-              ))}
+              {languages
+                ? (
+                  Object.values(languages).map((language) => (
+                    <CountryInfo key={generateRandomUUID(language)}>{language}</CountryInfo>
+                  ))
+                )
+                : <CountryInfo>No languages was found</CountryInfo>}
             </CountryInfoContainer>
             <CustomHorizontalDivider />
             <SectionTitle>Border countries</SectionTitle>
             <CountryInfoContainer flexDirection="column" justifyContent="space-around">
-              {borderCountries.map((border) => (
-                <CountryInfo
-                  key={generateRandomUUID(border.name.common)}
-                  margin="5px 0"
-                >
-                  {border.name.common}
-                </CountryInfo>
-              ))}
+              {borderCountries.length === 0
+                ? <CountryInfo>No border countries was found!</CountryInfo>
+                : borderCountries.map((border) => (
+                  <CountryInfo
+                    key={generateRandomUUID(border.name.common)}
+                    margin="5px 0"
+                  >
+                    {border.name.common}
+                  </CountryInfo>
+                ))}
             </CountryInfoContainer>
             <CustomHorizontalDivider />
             <SectionTitle>Translations</SectionTitle>
-            {Object.entries(translations).map((translation) => (
-              <CountryInfo
-                key={generateRandomUUID(translation[0])}
-                margin="5px 0"
-              >
-                {`${translation[0].toUpperCase()} - ${translation[1].official}`}
-              </CountryInfo>
-            ))}
+            {translations
+              ? (
+                Object.entries(translations).map((translation) => (
+                  <CountryInfo
+                    key={generateRandomUUID(translation[0])}
+                    margin="5px 0"
+                  >
+                    {`${translation[0].toUpperCase()} - ${translation[1].official}`}
+                  </CountryInfo>
+                ))
+              )
+              : <CountryInfo>No translations was found</CountryInfo>}
           </ContentContainer>
           <VerticalDivider />
           <RightSideContainer>
             <ImageContainer>
-              {Object.entries(coatOfArms).length === 0
-                ? <CountryInfo>{'This country doesn\'t have a coat of arms image'}</CountryInfo>
-                : <Image src={coatOfArms.svg} />}
+              {getCoatOfArms()}
             </ImageContainer>
             <ImageTitle>{`Coat of arms of ${name.common}`}</ImageTitle>
           </RightSideContainer>
