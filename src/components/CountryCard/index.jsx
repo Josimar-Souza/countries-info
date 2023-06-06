@@ -17,10 +17,11 @@ function CountryCard({ country, setDetailsModalInfo }) {
     region,
     population,
     capital,
+    cca2,
   } = country;
 
   const onSeeDetailsButtonClicked = () => {
-    setDetailsModalInfo({ open: true, countryName: name.common });
+    setDetailsModalInfo({ open: true, cca2 });
   };
 
   return (
@@ -46,6 +47,7 @@ CountryCard.propTypes = {
     name: PropTypes.shape({
       common: PropTypes.string,
     }).isRequired,
+    cca2: PropTypes.string.isRequired,
     region: PropTypes.string.isRequired,
     population: PropTypes.number.isRequired,
     capital: PropTypes.arrayOf(PropTypes.string).isRequired,

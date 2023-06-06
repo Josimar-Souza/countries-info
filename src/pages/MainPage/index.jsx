@@ -13,7 +13,7 @@ function MainPage() {
   const { countries } = useContext(countriesContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageCountries, setCurrentPageCountries] = useState([]);
-  const [detailsModalInfo, setDetailsModalInfo] = useState({ open: false, countryName: '' });
+  const [detailsModalInfo, setDetailsModalInfo] = useState({ open: false, cca2: '' });
 
   useEffect(() => {
     const endIndex = currentPage * 10;

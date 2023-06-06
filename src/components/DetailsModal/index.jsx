@@ -23,8 +23,8 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
 
   useEffect(() => {
     const getCountry = async () => {
-      if (detailsModalInfo.countryName !== '') {
-        const countryFounded = await countriesAPI.getCountryByName(detailsModalInfo.countryName);
+      if (detailsModalInfo.cca2 !== '') {
+        const countryFounded = await countriesAPI.getCountryByCCA2(detailsModalInfo.cca2);
         setLoading(false);
         setCountry(countryFounded[0]);
       }
@@ -40,11 +40,12 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
   return (
     <CustomModal
       open={detailsModalInfo.open}
-      onCancel={() => setDetailsModalInfo({ open: false, countryName: '' })}
+      onCancel={() => setDetailsModalInfo({ open: false, cca2: '' })}
       width="85%"
+      destroyOnClose
       footer={[
         <CustomButton
-          onClick={() => setDetailsModalInfo({ open: false, countryName: '' })}
+          onClick={() => setDetailsModalInfo({ open: false, cca2: '' })}
         >
           OK
         </CustomButton>,
@@ -78,7 +79,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
 DetailsModal.propTypes = {
   detailsModalInfo: PropTypes.shape({
     open: PropTypes.bool.isRequired,
-    countryName: PropTypes.string.isRequired,
+    cca2: PropTypes.string.isRequired,
   }).isRequired,
   setDetailsModalInfo: PropTypes.func.isRequired,
 };

@@ -69,6 +69,16 @@ class CountriesAPI {
       return new ErrorCreator(e, `Não foi possível encontrar países com o idioma "${language}"`);
     }
   }
+
+  async getCountryByCCA2(cca2) {
+    try {
+      const { data } = await this.api.get(`${baseUrl}/alpha/${cca2}`);
+
+      return data;
+    } catch (e) {
+      return new ErrorCreator(e, `Não foi possível encontrar o país com o cca2 "${cca2}"`);
+    }
+  }
 }
 
 export default CountriesAPI;
