@@ -10,6 +10,13 @@ const lightTheme = {
     darkModeButtonText: 'white',
     searchColor: 'black',
     searchBackgroundColor: 'white',
+    modalBackground: 'white',
+    modalButton: 'white',
+    modalButtonBorder: '1px solid black',
+    modalButtonColor: 'black',
+    modalTextColor: 'black',
+    modalVerticalDividerColor: 'rgba(181, 181, 181, 0.2)',
+    modalLinkColor: 'blue',
   },
 };
 
@@ -25,6 +32,13 @@ const darkTheme = {
     darkModeButtonText: 'black',
     searchColor: 'white',
     searchBackgroundColor: '#704c5e',
+    modalBackground: '#3ca7b7',
+    modalButton: '#15616d',
+    modalButtonBorder: 'none',
+    modalButtonColor: 'white',
+    modalTextColor: 'white',
+    modalVerticalDividerColor: 'rgba(255, 255, 255, 0.2)',
+    modalLinkColor: 'blue',
   },
 };
 

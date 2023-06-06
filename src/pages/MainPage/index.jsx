@@ -7,11 +7,13 @@ import { countriesContext } from '../../context/CountriesContext';
 import CountryCard from '../../components/CountryCard';
 import generateRandomUUID from '../../helpers/randomUUID';
 import sendNotification from '../../helpers/sendNotification';
+import DetailsModal from '../../components/DetailsModal';
 
 function MainPage() {
   const { countries } = useContext(countriesContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageCountries, setCurrentPageCountries] = useState([]);
+  const [detailsModalInfo, setDetailsModalInfo] = useState({ open: false, cca2: '' });
 
   useEffect(() => {
     const endIndex = currentPage * 10;
@@ -25,7 +27,7 @@ function MainPage() {
       sendNotification('Não foi possível realizar a pesquisa, verifique o termo pesquisado e tenha a certeza de pesquisar em ingles', 'error');
     }
   }, [currentPage, countries]);
-
+  // When performing a search you need to set the current page to 1 again.
   return (
     <MainContainer>
       <Header />
@@ -33,7 +35,11 @@ function MainPage() {
         <Search />
         <CountriesCardsContainer>
           {currentPageCountries.map((country) => (
-            <CountryCard key={generateRandomUUID(country.name.common)} country={country} />
+            <CountryCard
+              key={generateRandomUUID(country.name.common)}
+              country={country}
+              setDetailsModalInfo={setDetailsModalInfo}
+            />
           ))}
         </CountriesCardsContainer>
         <PaginationComponent
@@ -44,6 +50,10 @@ function MainPage() {
           total={countries.length}
         />
       </ContentContainer>
+      <DetailsModal
+        detailsModalInfo={detailsModalInfo}
+        setDetailsModalInfo={setDetailsModalInfo}
+      />
     </MainContainer>
   );
 }
