@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Spin, Divider } from 'antd';
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import {
   CustomModal,
   CustomButton,
@@ -55,7 +56,6 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
 
     getCountry();
   }, [detailsModalInfo]);
-  console.log(country);
 
   const {
     name,
@@ -117,8 +117,35 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
               <CountryInfo>{`Population: ${numberFormatter(population)}`}</CountryInfo>
             </CountryInfoContainer>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
-              <CountryInfo>{`Independent: ${independent}`}</CountryInfo>
-              <CountryInfo>{`Land locked: ${landlocked}`}</CountryInfo>
+              {independent
+                ? (
+                  <CountryInfo>
+                    Independent:
+                    {' '}
+                    <CheckOutlined />
+                  </CountryInfo>
+                )
+                : (
+                  <CountryInfo>
+                    Independent:
+                    <CloseOutlined />
+                  </CountryInfo>
+                )}
+              {landlocked
+                ? (
+                  <CountryInfo>
+                    Land Locked:
+                    {' '}
+                    <CheckOutlined />
+                  </CountryInfo>
+                )
+                : (
+                  <CountryInfo>
+                    Land Locked:
+                    {' '}
+                    <CloseOutlined />
+                  </CountryInfo>
+                )}
             </CountryInfoContainer>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
               <CountryInfo>{`Status: ${status}`}</CountryInfo>
@@ -126,7 +153,21 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
             </CountryInfoContainer>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
               <CountryInfo>{`CCA2: ${cca2}`}</CountryInfo>
-              <CountryInfo>{`Member of the united nations: ${unMember}`}</CountryInfo>
+              {unMember
+                ? (
+                  <CountryInfo>
+                    Member of the united nations:
+                    {' '}
+                    <CheckOutlined />
+                  </CountryInfo>
+                )
+                : (
+                  <CountryInfo>
+                    Member of the united nations:
+                    {' '}
+                    <CloseOutlined />
+                  </CountryInfo>
+                )}
             </CountryInfoContainer>
             <Divider />
             <SectionTitle>Currencies</SectionTitle>
