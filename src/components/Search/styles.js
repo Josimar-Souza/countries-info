@@ -28,6 +28,16 @@ export const FormItemsContainer = styled.div`
     font-weight: 700;
     min-height: 50px;
     width: 10%;
+
+    @media only screen and (max-width: 512px) {
+      font-size: 4vw;
+      min-height: 20px;
+      width: 30%;
+    }
+  }
+
+  @media only screen and (max-width: 512px) {
+    flex-direction: column;
   }
 `;
 
@@ -41,8 +51,18 @@ export const TermSearchContainer = styled.div`
     color: ${({ theme }) => theme.colors.searchColor};
     font-size: 22px;
     font-weight: 700;
-    margin-left: 10px;
+    margin-left: 8px;
     min-height: 50px;
+    width: 100%;
+
+    @media only screen and (max-width: 512px) {
+      font-size: 4vw;
+    }
+  }
+
+  @media only screen and (max-width: 512px) {
+    margin: 0;
+    margin-bottom: 15px;
     width: 100%;
   }
 `;
@@ -50,6 +70,12 @@ export const TermSearchContainer = styled.div`
 export const TypeSearchContainer = styled.div`
   margin-right: 15px;
   width: 10%;
+
+  @media only screen and (max-width: 512px) {
+    margin: 0;
+    margin-bottom: 15px;
+    width: 100%;
+  }
 `;
 
 export const TypeSelect = styled.select`
@@ -62,11 +88,22 @@ export const TypeSelect = styled.select`
   min-height: 50px;
   padding: 10px;
   width: 100%;
+
+  @media only screen and (max-width: 512px) {
+    font-size: 4vw;
+    margin: 0;
+    margin-left: 8px;
+    width: 100%;
+  }
 `;
 
 export const TypeSelectOption = styled.option`
   font-size: 22px;
   font-weight: 700;
+
+  @media only screen and (max-width: 512px) {
+    font-size: 4vw;
+  }
 `;
 
 export const ClearFilterContainer = styled.div`

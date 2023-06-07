@@ -11,6 +11,10 @@ export const CountryCardContainer = styled.div`
   margin: 10px;
   padding: 5px;
   width: 18%;
+
+  @media only screen and (max-width: 512px) {
+    width: 70%;
+  }
 `;
 
 export const CountryImageContainer = styled.div`

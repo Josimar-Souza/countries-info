@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Spin } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import { isMobile } from 'react-device-detect';
+
 import {
   CustomModal,
   CustomButton,
@@ -86,12 +88,10 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
   } = country;
 
   const getCoatOfArms = () => {
-    if (coatOfArms) {
-      if (Object.entries(coatOfArms).length === 0) {
-        return (
-          <CountryInfo>{'This country doesn\'t have a coat of arms image'}</CountryInfo>
-        );
-      }
+    if (coatOfArms && Object.entries(coatOfArms).length === 0) {
+      return (
+        <CountryInfo>{'This country doesn\'t have a coat of arms image'}</CountryInfo>
+      );
     }
 
     return (
@@ -121,7 +121,18 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
             </ImageContainer>
             <ImageTitle>{name.official}</ImageTitle>
           </LeftSideContainer>
-          <VerticalDivider />
+          {isMobile
+            ? (
+              <RightSideContainer>
+                <ImageContainer>
+                  {getCoatOfArms()}
+                </ImageContainer>
+                <ImageTitle>{`Coat of arms of ${name.common}`}</ImageTitle>
+              </RightSideContainer>
+            )
+            : null}
+          {!isMobile ? <VerticalDivider /> : null}
+          {isMobile ? <CustomHorizontalDivider /> : null}
           <ContentContainer>
             <SectionTitle>Basics</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
@@ -214,7 +225,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
             <CustomHorizontalDivider />
             <SectionTitle>Maps</SectionTitle>
             <CountryInfoContainer justifyContent="space-between" flexDirection="row">
-              <CountryInfo>
+              <CountryInfo mobileMargin="10px 0">
                 Google maps:
                 {' '}
                 <CustomLink
@@ -225,7 +236,7 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
                   {maps.googleMaps}
                 </CustomLink>
               </CountryInfo>
-              <CountryInfo>
+              <CountryInfo mobileMargin="10px 0">
                 Open street maps:
                 {' '}
                 <CustomLink
@@ -277,13 +288,17 @@ function DetailsModal({ detailsModalInfo, setDetailsModalInfo }) {
               )
               : <CountryInfo>No translations was found</CountryInfo>}
           </ContentContainer>
-          <VerticalDivider />
-          <RightSideContainer>
-            <ImageContainer>
-              {getCoatOfArms()}
-            </ImageContainer>
-            <ImageTitle>{`Coat of arms of ${name.common}`}</ImageTitle>
-          </RightSideContainer>
+          {!isMobile ? <VerticalDivider /> : null}
+          {!isMobile
+            ? (
+              <RightSideContainer>
+                <ImageContainer>
+                  {getCoatOfArms()}
+                </ImageContainer>
+                <ImageTitle>{`Coat of arms of ${name.common}`}</ImageTitle>
+              </RightSideContainer>
+            )
+            : null}
         </ModalContent>
       )}
     </CustomModal>

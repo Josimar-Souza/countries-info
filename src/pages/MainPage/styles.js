@@ -20,4 +20,9 @@ export const CountriesCardsContainer = styled.div`
   justify-content: center;
   padding: 10px;
   width: 100%;
+
+  @media only screen and (max-width: 512px) {
+    align-items: center;
+    flex-direction: column;
+  }
 `;
