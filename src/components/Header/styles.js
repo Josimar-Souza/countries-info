@@ -13,14 +13,23 @@ export const HeaderContainer = styld.div`
     background: none;
     border: none;
     color: ${({ theme }) => theme.colors.darkModeButtonText};
-    font-size: 18px;
+    font-size: 1vw;
     font-weight: 600;
     margin-right: 40px;
+
+    @media only screen and (max-width: 512px) {
+      font-size: 2.5vw;
+    }
   }
 `;
 
 export const HeaderTitle = styld.h1`
   color: ${({ theme }) => theme.colors.text};
+  font-size: 2vw;
   margin: 0;
   margin-left: 40px;
+
+  @media only screen and (max-width: 512px) {
+    font-size: 3.2vw;
+  }
 `;
