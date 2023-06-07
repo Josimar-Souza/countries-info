@@ -6,6 +6,11 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
+
+  @media only screen and (max-width: 512px) {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 `;
 
 export const CustomPaginationComponent = styled(Pagination)`
@@ -45,4 +50,9 @@ export const CurrentPageIndicator = styled.p`
   margin-left: 20px;
   padding: 10px;
   text-align: center;
+
+  @media only screen and (max-width: 512px) {
+    margin 0;
+    margin-top: 15px;
+  }
 `;

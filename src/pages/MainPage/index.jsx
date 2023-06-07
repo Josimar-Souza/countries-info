@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
+
 import { MainContainer, ContentContainer, CountriesCardsContainer } from './styles';
 import Header from '../../components/Header';
 import Search from '../../components/Search';
@@ -33,6 +35,17 @@ function MainPage() {
       <Header />
       <ContentContainer>
         <Search setCurrentPage={setCurrentPage} />
+        {isMobile
+          ? (
+            <PaginationComponent
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              defaultPage={1}
+              pageSize={10}
+              total={countries.length}
+            />
+          )
+          : null}
         <CountriesCardsContainer>
           {currentPageCountries.map((country) => (
             <CountryCard
@@ -42,13 +55,17 @@ function MainPage() {
             />
           ))}
         </CountriesCardsContainer>
-        <PaginationComponent
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          defaultPage={1}
-          pageSize={10}
-          total={countries.length}
-        />
+        {!isMobile
+          ? (
+            <PaginationComponent
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              defaultPage={1}
+              pageSize={10}
+              total={countries.length}
+            />
+          )
+          : null}
       </ContentContainer>
       <DetailsModal
         detailsModalInfo={detailsModalInfo}
