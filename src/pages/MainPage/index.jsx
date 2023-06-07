@@ -27,7 +27,7 @@ function MainPage() {
       sendNotification('Não foi possível realizar a pesquisa, verifique o termo pesquisado e tenha a certeza de pesquisar em ingles', 'error');
     }
   }, [currentPage, countries]);
-  // When performing a search you need to set the current page to 1 again.
+
   return (
     <MainContainer>
       <Header />
