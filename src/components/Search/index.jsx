@@ -18,6 +18,7 @@ import {
   ClearFilterContainer,
 } from './styles';
 import { countriesContext } from '../../context/CountriesContext';
+import sendNotification from '../../helpers/sendNotification';
 
 function Search({ setCurrentPage }) {
   const { searchCountries, getAllCountries } = useContext(countriesContext);
@@ -25,10 +26,13 @@ function Search({ setCurrentPage }) {
   const [hasSearched, setHasSearched] = useState(false);
 
   const onSearchFinished = (values) => {
-    setHasSearched(true);
-
-    searchCountries(values.term, values.type);
-    setCurrentPage(1);
+    if (values.term) {
+      setHasSearched(true);
+      searchCountries(values.term, values.type);
+      setCurrentPage(1);
+    } else {
+      sendNotification('Por favor, digite um termo para realizar a pesquisa', 'error');
+    }
   };
 
   const onClearSearchClicked = () => {
