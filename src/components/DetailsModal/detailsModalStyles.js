@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Modal, Button } from 'antd';
 
+const getCountryInfoMobileMargin = ({ mobileMargin }) => mobileMargin || '2px 0';
+
 export const CustomModal = styled(Modal)`
   &&& {
     div {
@@ -20,6 +22,11 @@ export const ModalContent = styled.div`
   justify-content: space-between;
   padding: 10px;
   width: 100%;
+
+  @media only screen and (max-width: 512px) {
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 export const LeftSideContainer = styled.div`
@@ -29,6 +36,11 @@ export const LeftSideContainer = styled.div`
   justify-content: flex-start;
   max-height: 40vh;
   width: 20%;
+
+  @media only screen and (max-width: 512px) {
+    margin: 20px 0;
+    width: 90%;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -37,6 +49,10 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   padding: 5px;
   width: 60%;
+
+  @media only screen and (max-width: 512px) {
+    width: 100%;
+  }
 `;
 
 export const RightSideContainer = styled.div`
@@ -46,6 +62,11 @@ export const RightSideContainer = styled.div`
   justify-content: flex-start;
   max-height: 40vh;
   width: 20%;
+
+  @media only screen and (max-width: 512px) {
+    margin: 20px 0;
+    width: 90%;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -74,6 +95,10 @@ export const CountryInfoContainer = styled.div`
   justify-content: ${({ justifyContent }) => justifyContent};
   margin: 10px 0;
   width: 100%;
+
+  @media only screen and (max-width: 512px) {
+    flex-direction: column;
+  }
 `;
 
 export const CountryInfo = styled.p`
@@ -81,6 +106,10 @@ export const CountryInfo = styled.p`
   font-weight: 600;
   margin: ${({ margin }) => margin};
   text-align: center;
+
+  @media only screen and (max-width: 512px) {
+    margin: ${getCountryInfoMobileMargin};
+  }
 `;
 
 export const SectionTitle = styled.h2`
