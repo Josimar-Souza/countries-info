@@ -6,6 +6,7 @@ import {
   Button,
 } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { isMobile } from 'react-device-detect';
 
 import {
   SearchContainer,
@@ -40,7 +41,7 @@ function Search({ setCurrentPage }) {
     <SearchContainer>
       <Form layout="inline" name="countries-search" onFinish={onSearchFinished}>
         <FormItemsContainer>
-          <SearchOutlined style={{ fontSize: '28px' }} />
+          {isMobile ? null : <SearchOutlined style={{ fontSize: '28px' }} />}
           <TermSearchContainer>
             <Form.Item
               name="term"
