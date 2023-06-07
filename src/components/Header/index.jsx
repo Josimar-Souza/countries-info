@@ -12,7 +12,7 @@ function Header() {
       <HeaderTitle>Where in the world?</HeaderTitle>
       <Button onClick={changeTheme}>
         {currTheme.darkMode ? <BulbFilled /> : <BulbOutlined />}
-        Dark Mode
+        {currTheme.darkMode ? 'Light mode' : 'Dark mode'}
       </Button>
     </HeaderContainer>
   );
